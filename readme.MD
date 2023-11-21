@@ -30,15 +30,22 @@ The project is structured as follows:
 |   |   |-- ...
 |   |-- labelled_pictures.csv
 |-- notebooks
-|   |-- ...
+|   |-- web_scraping.ipynb
 |-- tests
 |   |-- ...
 |-- requirements.txt
+|-- .gitignore
 ```
 
 - `bin`: contains the scripts to run the project
 - `models`: contains the trained models
 - `data`: contains the data used for training
 - `notebooks`: contains the notebooks used for the project
+    - `web_scraping.ipynb`: contains the notebook used to scrap the data
 - `tests`: contains the tests for the project
 - `requirements.txt`: contains the dependencies for the project
+- `.gitignore`: contains the files to ignore for git
+
+## Installation
+
+To use this project, you can create a venv using : `python3 -m venv env`, then you can activate it using `env\Scripts\activate.bat` on Windows or `en/bin/activate` on Unix and then install the dependencies using `pip install -r requirements.txt`.
