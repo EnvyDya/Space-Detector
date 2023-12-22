@@ -22,30 +22,41 @@ The objective of this project is to automatically label [James Webb Space Telesc
 
 The project is structured as follows:
 
-```bash
-|-- src
-|   |-- web_scraping.py
-|-- models
-|-- data
-|   |-- labelled_pictures.csv
-|   |-- ...
-|-- notebooks
-|   |-- web_scraping.ipynb
-|-- tests
-|   |-- ...
-|-- requirements.txt
-|-- .gitignore
+```
+.
+├── data
+│   ├── labelled_pictures.csv
+│   └── ...
+├── models
+│   └── ...
+├── notebooks
+│   ├── model_design.ipynb
+│   └── web_scraping.ipynb
+├── src
+│   └── web_scraping.py
+├── tests
+│   └── test_model.py
+├── .env
+├── .gitignore
+├── README.md
+└── requirements.txt
 ```
 
-- `src`: contains the scripts to run the project
-    - `web_scraping.py`: contains the module used to scrap the data
-- `models`: contains the trained models
-- `data`: contains the data used for training (will be filled at the launch of web scraping)
-- `notebooks`: contains the notebooks used for the project
-    - `web_scraping.ipynb`: contains the notebook used to scrap the data
-- `tests`: contains the tests for the project
-- `requirements.txt`: contains the dependencies for the project
-- `.gitignore`: contains the files to ignore for git
+- `data`: contains the data used for training.
+    - `labelled_pictures.csv`: contains the labelled pictures.
+    - `jpg files`: the pictures in jpg format.
+- `models`: contains the trained models.
+- `notebooks`: contains the notebooks used for the project.
+    - `model_design.ipynb`: the notebook used to design the model.
+    - `web_scraping.ipynb`: the notebook used to design the data scraping.
+- `src`: contains the code source of the project.
+    - `web_scraping.py`: the module used to scrap the data.
+- `tests`: contains the tests for the project.
+    - `test_model.py`: the tests for the model.
+- `.env`: the environment variables.
+- `.gitignore`: the gitignore file.
+- `README.md`: the readme file.
+- `requirements.txt`: the requirements file.
 
 ## Installation
 
@@ -53,4 +64,4 @@ To use this project, you can create a venv using : `python3 -m venv env`, then y
 
 ## Get the data
 
-To get the images, you can run the `web_scraping.py` script using `python web_scraping.py` from the src folder.
+To get the images, you can run the `web_scraping.py` script using `python src/web_scraping.py` from the root folder. It will download the NB_IMAGES_TO_DOWNLOAD first images from the Hubble website and save them in the `data` folder, while creating a csv file with the images associated to their labels. NB_IMAGES_TO_DOWNLOAD is an environment variable that can be set to change the number of images to download defined in the .env file.

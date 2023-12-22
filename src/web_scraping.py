@@ -3,9 +3,12 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
+import os
+
 
 SITE = 'https://esahubble.org/images/'
-NB_IMGS = 49
+
+NB_IMGS = os.getenv("NB_IMGS_TO_DOWNLOAD")
 
 
 def find_pictures():
@@ -33,7 +36,7 @@ def find_pictures():
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
         img_tags = soup.find_all('img')[2]["src"]
-        categorie = soup.find("div", 
+        categorie = soup.find("div",
                               {"class": "object-info"}).find_all("a")[-1].text
         img_urls.append(img_tags)
         img_categ.append(categorie)
@@ -54,14 +57,14 @@ def create_data(img_urls, img_categ):
         if not filename:
             print("Regex didn't match with the url: {}".format(img_urls[idx]))
             continue
-        with open("../data/"+filename.group(1), 'wb') as f:
+        with open("data/"+filename.group(1), 'wb') as f:
             response = requests.get(img_urls[idx])
             f.write(response.content)
             curr = pd.DataFrame([[filename.group(1), img_categ[idx]]],
                                 columns=["file", "target"])
             data = pd.concat([curr, data])
 
-    data.to_csv("../data/labelled_pictures.csv", sep=";", index=False)
+    data.to_csv("data/labelled_pictures.csv", sep=";", index=False)
 
 
 if __name__ == '__main__':
