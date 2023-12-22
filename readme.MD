@@ -8,7 +8,7 @@
 ## Description
 
 This is the final project in the Big Data module, the objective is to, to a given picture, tell if there is a galaxy.\
-The pictures for the model training will be retrieved from [Hubble Website](https://hubblesite.org/images).
+The pictures for the model training will be retrieved from [Hubble Website](https://esahubble.org/images/), we will only use Hubble pictures to ensure picture quality.
 
 In this website, pictures are labelled in the `Object description` field. The training dataset will be constructed by labelling whether if the `Object description` contains the word `galaxy` or not.
 
@@ -26,9 +26,8 @@ The project is structured as follows:
 |-- bin
 |-- models
 |-- data
-|   |-- pictures
-|   |   |-- ...
 |   |-- labelled_pictures.csv
+|   |-- ...
 |-- notebooks
 |   |-- web_scraping.ipynb
 |-- tests
@@ -38,8 +37,9 @@ The project is structured as follows:
 ```
 
 - `bin`: contains the scripts to run the project
+    - `web_scraping.py`: contains the module used to scrap the data
 - `models`: contains the trained models
-- `data`: contains the data used for training
+- `data`: contains the data used for training (will be filled at the launch of web scraping)
 - `notebooks`: contains the notebooks used for the project
     - `web_scraping.ipynb`: contains the notebook used to scrap the data
 - `tests`: contains the tests for the project
