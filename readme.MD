@@ -23,7 +23,8 @@ The objective of this project is to automatically label [James Webb Space Telesc
 The project is structured as follows:
 
 ```bash
-|-- bin
+|-- src
+|   |-- web_scraping.py
 |-- models
 |-- data
 |   |-- labelled_pictures.csv
@@ -36,7 +37,7 @@ The project is structured as follows:
 |-- .gitignore
 ```
 
-- `bin`: contains the scripts to run the project
+- `src`: contains the scripts to run the project
     - `web_scraping.py`: contains the module used to scrap the data
 - `models`: contains the trained models
 - `data`: contains the data used for training (will be filled at the launch of web scraping)
@@ -48,4 +49,4 @@ The project is structured as follows:
 
 ## Installation
 
-To use this project, you can create a venv using : `python3 -m venv env`, then you can activate it using `env\Scripts\activate.bat` on Windows or `en/bin/activate` on Unix and then install the dependencies using `pip install -r requirements.txt`.
+To use this project, you can create a venv using : `python3 -m venv env`, then you can activate it using `env\Scripts\activate.bat` on Windows or `env/bin/activate` on Unix and then install the dependencies using `pip install -r requirements.txt`.
