@@ -50,3 +50,7 @@ The project is structured as follows:
 ## Installation
 
 To use this project, you can create a venv using : `python3 -m venv env`, then you can activate it using `env\Scripts\activate.bat` on Windows or `env/bin/activate` on Unix and then install the dependencies using `pip install -r requirements.txt`.
+
+## Get the data
+
+To get the images, you can run the `web_scraping.py` script using `python web_scraping.py` from the src folder.
