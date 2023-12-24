@@ -2,13 +2,11 @@ import re
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-
 import os
 
 
 SITE = 'https://esahubble.org/images/'
-
-NB_IMGS = os.getenv("NB_IMGS_TO_DOWNLOAD")
+NB_IMGS = 49
 
 
 def find_pictures():
@@ -68,5 +66,6 @@ def create_data(img_urls, img_categ):
 
 
 if __name__ == '__main__':
+    os.system("rm data/*")
     img_urls, img_categ = find_pictures()
     create_data(img_urls, img_categ)

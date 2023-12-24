@@ -1,3 +1,4 @@
 .env
 data/*.jpg
 data/*.csv
+__pycache__
