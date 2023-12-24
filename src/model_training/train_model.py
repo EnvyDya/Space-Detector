@@ -22,15 +22,38 @@ torch.manual_seed(SEED)
 
 
 def load_img(img_name):
+    """
+    Load an image from the data folder
+    parameters:
+        - img_name: name of the image file
+    returns:
+        - the image as a numpy array
+    """
     return plt.imread('data/' + img_name)
 
 
 def compress_img(img, width=300, height=300):
+    """
+    Compress an image to a given size
+    parameters:
+        - img: image to compress
+        - width: width of the compressed image
+        - height: height of the compressed image
+    returns:
+        - the compressed image
+    """
     img = cv2.resize(img, (width, height))
     return img
 
 
 def data_augmentation(img):
+    """
+    Create new images from an existing one by applying transformations
+    parameters:
+        - img: image to transform
+    returns:
+        - a tuple of transformed images
+    """
     return (cv2.flip(img, 1), cv2.flip(img, 0), cv2.flip(img, -1),
             cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE),
             cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE),
@@ -38,6 +61,16 @@ def data_augmentation(img):
 
 
 def create_Xs_ys(df):
+    """
+    Create the X and y arrays from the dataframe
+    parameters:
+        - df: dataframe containing the data
+    returns:
+        - X_train: training images
+        - X_test: testing images
+        - y_train: training labels
+        - y_test: testing labels
+    """
     X, y = [], []
     for i, row in df.iterrows():
         img = load_img(row['file'])

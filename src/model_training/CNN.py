@@ -6,7 +6,18 @@ from torch.utils.data import DataLoader, TensorDataset
 
 
 class CNN(nn.Module):
+    """
+    The Convolutional Neural Network model
+    """
+
     def __init__(self):
+        """
+        Initialize the model
+        The model architecture is:
+        - 3 convolutional layers
+        - 1 pooling layer
+        - 2 fully connected linear layers
+        """
         super().__init__()
         self.conv1 = nn.Conv2d(3, 16, 3, padding=1)
         self.conv2 = nn.Conv2d(16, 32, 3, padding=1)
@@ -16,6 +27,11 @@ class CNN(nn.Module):
         self.fc2 = nn.Linear(64, 1)
 
     def forward(self, x):
+        """
+        The forward pass of the model
+        parameters:
+            - x: input tensor
+        """
         x = self.pool(F.relu(self.conv1(x)))
         x = self.pool(F.relu(self.conv2(x)))
         x = self.pool(F.relu(self.conv3(x)))
@@ -27,6 +43,18 @@ class CNN(nn.Module):
 
 def train(model, X_train, y_train, X_test, y_test,
           epochs=10, batch_size=32, lr=0.001):
+    """
+    Train the model
+    parameters:
+        - model: the model to train
+        - X_train: training images
+        - y_train: training labels
+        - X_test: testing images
+        - y_test: testing labels
+        - epochs: number of epochs
+        - batch_size: batch size
+        - lr: learning rate
+    """
     X_train = torch.from_numpy(X_train).float().permute(0, 3, 1, 2)
     y_train = torch.from_numpy(y_train).float()
     X_test = torch.from_numpy(X_test).float().permute(0, 3, 1, 2)
