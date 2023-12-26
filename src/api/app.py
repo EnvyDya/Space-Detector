@@ -15,12 +15,8 @@ import sys
 sys.path.append('src/model_training')
 from CNN import CNN
 
-from dotenv import load_dotenv
-
-
 MODEL_PATH = "models/galaxy_classifier-v"
 
-load_dotenv()
 URL_MONGO = os.getenv('URL_MONGO')
 
 

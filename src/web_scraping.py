@@ -66,6 +66,5 @@ def create_data(img_urls, img_categ):
 
 
 if __name__ == '__main__':
-    os.system("rm data/*")
     img_urls, img_categ = find_pictures()
     create_data(img_urls, img_categ)

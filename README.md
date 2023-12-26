@@ -5,6 +5,8 @@
 - Nicolas Deronsart
 - Clément Bonduelle
 
+![Logo](logo.jpg "Title")
+
 ## Description
 
 This is the final project in the Big Data module, the objective is to, to a given picture, tell if there is a galaxy.
@@ -17,8 +19,6 @@ The model will be served on an online website that will allow to upload a pictur
 ## Objective
 
 The objective of this project is to create a collaborative website `Galaxy.net` where people can add pictures of galaxies. To ensure that the pictures are relevant, we use a model to predict if they contain a galaxy or not.  
-
-A model can be automatically trained using the [James Webb Space Telescope](https://en.wikipedia.org/wiki/James_Webb_Space_Telescope) pictures.
 
 ## Project structure
 
@@ -41,8 +41,8 @@ The project is structured as follows:
 │   └── web_scraping.py
 ├── tests
 │   └── test_model.py
-├── .env
 ├── .gitignore
+├── logo.jpg
 ├── README.md
 ├── requirements.txt
 └── scrap_and_train.sh
@@ -62,8 +62,8 @@ The project is structured as follows:
     - `web_scraping.py`: the module used to scrap the data.
 - `tests`: contains the tests for the project.
     - `test_model.py`: the tests for the model.
-- `.env`: the environment variables.
 - `.gitignore`: the gitignore file.
+- `logo.jpg` : logo of the project.
 - `README.md`: the readme file.
 - `requirements.txt`: the requirements file.
 
@@ -71,7 +71,7 @@ The project is structured as follows:
 
 To use this project, you can create a venv using : 
 ```
-python3 -m venv env
+python -m venv env
 ```
 
 Then you can activate it using the following command on Unix : 
@@ -89,24 +89,9 @@ And finally install the dependencies using
 pip install -r requirements.txt
 ```
 
-## Get the data
-
-To get the images, you can run the `web_scraping.py` script using the following command from the root folder : 
-```
-python src/web_scraping.py
-``` 
-It will download the 49 images from the Hubble website and save them in the `data` folder, while creating a csv file with the images associated to their labels. 
-
-## Train the model
-
-To train the model, you can run the `train_model.py` script using this command from the root folder : 
-```
-python src/model_training/train_model.py
-``` 
-It will train the model on the data in the `data` folder and save the model in the `models` folder. The model will be saved using the format `galaxy_classifier-v{...}.pt` where `{...}` is the version of the model.
-
 ## Get the data and train the model
 
+### Unix
 To get the data and train the model, you can run the `scrap_and_train.sh` script using :
 ```
 ./scrap_and_train.sh
@@ -116,6 +101,17 @@ If it doesn't work, you should run :
 ```
 chmod +x scrap_and_train.sh
 ```
+
+### Windows
+
+You can simply run the following two commands :
+
+```
+python src/web_scraping.py
+python src/model_training/train_model.py
+```
+
+It will train the model on the data in the `data` folder (49 images from the Hubble website retrieved by `web_scraping.py` with a csv file containing a labelling) and save the model in the `models` folder. The model will be saved using the format `galaxy_classifier-v{...}.pt` where `{...}` is the version of the model.
 
 ## The application
 
@@ -138,7 +134,7 @@ To run the API, you can run the following commands from the root folder :
 python src/api/app.py
 command uvicorn src.webapp.app:app --host 0.0.0.0 --reload
 ```
-Don't forget to enter your Mongo URL in the `.env` file with for example : 
+Don't forget to setup Mongo environment variable with for example : 
 ```
 URL_MONGO='mongodb://admin:admin@localhost:27017'
 ```
