@@ -1,3 +1,5 @@
-env
+.env
 data/*.jpg
 data/*.csv
+__pycache__
+.DS_Store
