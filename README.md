@@ -116,3 +116,34 @@ If it doesn't work, you should run :
 ```
 chmod +x scrap_and_train.sh
 ```
+
+## The application
+
+The application consists of a website where you can upload a picture and get a response telling if a galaxy is in it or not. If the picture contains a galaxy, the website will automatically add it to the main page of the website. It is composed of two parts : the api and the webapp.
+
+### The API
+
+The API is a FastAPI application that uses the model to predict if a picture contains a galaxy or not. It has one endpoint :
+- `/predict`: it takes pictures in the list format as inputs and returns a json response with the prediction.
+
+To run the API, you can run the following commands from the root folder : 
+```
+python src/api/app.py 
+command uvicorn src.webapp.app:app --host 0.0.0.0 --reload
+```
+
+While running the API is available at the URL : 
+```
+http://127.0.0.1:8000
+```
+
+### The webapp
+
+The webapp is a Streamlit application with two pages :
+- `Images`: the main page of the website, it contains the pictures of the galaxies given by the users.
+- `Upload new image`: the page where you can upload a picture and get a response telling if a galaxy is in it or not.
+
+To run the webapp, you can run the following command from the root folder : 
+```
+API_URL='http://127.0.0.1:8000' streamlit run src/webapp/app.py
+```
