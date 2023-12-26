@@ -119,17 +119,28 @@ chmod +x scrap_and_train.sh
 
 ## The application
 
-The application consists of a website where you can upload a picture and get a response telling if a galaxy is in it or not. If the picture contains a galaxy, the website will automatically add it to the main page of the website. It is composed of two parts : the api and the webapp.
+The application consists of a website where you can upload a picture and get a response telling if a galaxy is in it or not. If the picture contains a galaxy, the website will automatically add it to the main page of the website. It is composed of three parts : the database, the api and the webapp.
+
+### The database
+
+The database is a MongoDB database that contains the pictures of the galaxies.
+You have to create a database named `galaxy` and a collection named `images` to use the application.
+It will automatically add the pictures uploaded by the users to the database.
 
 ### The API
 
 The API is a FastAPI application that uses the model to predict if a picture contains a galaxy or not. It has one endpoint :
 - `/predict`: it takes pictures in the list format as inputs and returns a json response with the prediction.
+- `/images`: it returns the list of the galaxy images from the database.
 
 To run the API, you can run the following commands from the root folder : 
 ```
-python src/api/app.py 
+python src/api/app.py
 command uvicorn src.webapp.app:app --host 0.0.0.0 --reload
+```
+Don't forget to enter your Mongo URL in the `.env` file with for example : 
+```
+URL_MONGO='mongodb://admin:admin@localhost:27017'
 ```
 
 While running the API is available at the URL : 
