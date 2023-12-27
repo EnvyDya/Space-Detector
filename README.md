@@ -5,7 +5,7 @@
 - Nicolas Deronsart
 - Clément Bonduelle
 
-![Logo](logo.jpg "Title")
+![Logo](logo.jpg "Logo of Space-Detector")
 
 ## Description
 
