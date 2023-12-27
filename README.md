@@ -132,7 +132,7 @@ The API is a FastAPI application that uses the model to predict if a picture con
 To run the API, you can run the following commands from the root folder : 
 ```
 python src/api/app.py
-command uvicorn src.webapp.app:app --host 0.0.0.0 --reload
+command uvicorn src.api.app:app --host 0.0.0.0 --reload
 ```
 Don't forget to setup Mongo environment variable with for example : 
 ```
@@ -153,4 +153,9 @@ The webapp is a Streamlit application with two pages :
 To run the webapp, you can run the following command from the root folder : 
 ```
 API_URL='http://127.0.0.1:8000' streamlit run src/webapp/app.py
+```
+
+The website will be available in local at the URL : 
+```
+http://localhost:8501
 ```
