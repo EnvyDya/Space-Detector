@@ -168,5 +168,6 @@ http://localhost:8501
 
 To run tests, you have to run the following command (make sure that the API is up before you run it):
 ```
-python tests/test_model.py
+API_URL='http://127.0.0.1:8000' python tests/test_model.py
 ```
+With API_URL the URL of the API.
