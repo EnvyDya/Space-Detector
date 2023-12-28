@@ -5,7 +5,7 @@
 - Nicolas Deronsart
 - Clément Bonduelle
 
-![Logo](logo.jpg "Title")
+![Logo](logo.jpg "Logo of Space-Detector")
 
 ## Description
 
@@ -40,6 +40,8 @@ The project is structured as follows:
 │   │   └── train_model.py
 │   └── web_scraping.py
 ├── tests
+│   ├── test.jpg
+│   ├── test2.jpg
 │   └── test_model.py
 ├── .gitignore
 ├── logo.jpg
@@ -62,6 +64,8 @@ The project is structured as follows:
     - `web_scraping.py`: the module used to scrap the data.
 - `tests`: contains the tests for the project.
     - `test_model.py`: the tests for the model.
+    - `test.jpg` : picture of the Moon used for testing. (Picture not used for training, retrieved from [Envydya's Instagram](https://www.instagram.com/envydya/))
+    - `test2.jpg` : picture of a Galaxy used for testing. (Picture not used for training, retrieved from [Envydya's Instagram](https://www.instagram.com/envydya/))
 - `.gitignore`: the gitignore file.
 - `logo.jpg` : logo of the project.
 - `README.md`: the readme file.
@@ -159,3 +163,11 @@ The website will be available in local at the URL :
 ```
 http://localhost:8501
 ```
+
+## Testing
+
+To run tests, you have to run the following command (make sure that the API is up before you run it):
+```
+API_URL='http://127.0.0.1:8000' python tests/test_model.py
+```
+With API_URL the URL of the API.
